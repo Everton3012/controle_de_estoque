@@ -46,19 +46,19 @@ model Product {
   category Category @relation(fields: [category_id], references: [id])
   category_id String
 
-   itens       Item[]
+  itens       Item[]
   @@map("products")
  
 }
 
 model Item{
-    id          String     @id @default(uuid())
-    mount       Int
-    created_at  DateTime?  @default(now())
-    updated_at  DateTime?  @default(now())
+  id          String     @id @default(uuid())
+  mount       Int
+  created_at  DateTime?  @default(now())
+  updated_at  DateTime?  @default(now())
 
-    product Product @relation(fields: [product_id], references: [id])
-    product_id  String
+  product Product @relation(fields: [product_id], references: [id])
+  product_id  String
 
-    @@map("itens")
+  @@map("itens")
 }
