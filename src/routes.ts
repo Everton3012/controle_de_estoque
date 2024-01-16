@@ -15,5 +15,5 @@ router.get("/test" , (req: Request, res: Response) => {
 router.post("/user", new CreateUserController().handle);
 router.post("/session", new AuthUserController().handle);
 router.get("/me", isAutenticated, new DatailUserController().handle)
-router.delete("delete", isAutenticated, new RemoveUserController().handle)
+router.delete("/user/remove", new RemoveUserController().handle)
 export { router };
