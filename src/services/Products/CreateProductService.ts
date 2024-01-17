@@ -11,9 +11,10 @@ class CreateProductService {
                 description: description,
                 baner: baner,
                 category_id: category_id,
-                mount: +amount
+                amount: +amount
             }
         })
+        return product;
     }
 
 }

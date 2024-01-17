@@ -10,6 +10,8 @@ import { CreateCategoryController } from "./controllers/Category/CreateCategoryC
 import { EditCategoryController } from "./controllers/Category/EditCategoryController";
 import { ListCategoryController } from "./controllers/Category/ListCategoryController";
 import { RemoveCategoryController } from "./controllers/Category/RemoveCategoryController";
+import { CreateProductController } from "./controllers/Product/ProductController";
+import { EditProductController } from "./controllers/Product/EditProductController";
 
 
 const router = Router();
@@ -30,5 +32,9 @@ router.post("/category", isAutenticated, new CreateCategoryController().handle)
 router.patch("/category/edit" , isAutenticated, new EditCategoryController().handle)
 router.get("/category/all" , isAutenticated, new ListCategoryController().handle)
 router.delete("/category/remove", isAutenticated, new RemoveCategoryController().handle)
+
+//Products Routes
+router.post("/product", isAutenticated, upload.single("file"), new CreateProductController().handle)
+router.put("/product/edit" , isAutenticated, new EditProductController().handle)
 
 export { router };
