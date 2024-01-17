@@ -39,7 +39,7 @@ model Product {
   price       String
   description String
   baner       String
-  mount       Int
+  amount      Int
   created_at  DateTime?  @default(now())
   updated_at  DateTime?  @default(now())
 
