@@ -35,6 +35,6 @@ router.delete("/category/remove", isAutenticated, new RemoveCategoryController()
 
 //Products Routes
 router.post("/product", isAutenticated, upload.single("file"), new CreateProductController().handle)
-router.put("/product/edit" , isAutenticated, new EditProductController().handle)
+router.put("/product/edit" , isAutenticated,upload.single("file"), new EditProductController().handle)
 
 export { router };
