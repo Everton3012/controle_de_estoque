@@ -12,6 +12,10 @@ import { ListCategoryController } from "./controllers/Category/ListCategoryContr
 import { RemoveCategoryController } from "./controllers/Category/RemoveCategoryController";
 import { CreateProductController } from "./controllers/Product/ProductController";
 import { EditProductController } from "./controllers/Product/EditProductController";
+import { ListProductCategoryController } from "./controllers/Product/ListProductCategoryController";
+import { ListProductsController } from "./controllers/Product/ListProductsController";
+import { RemoveProductController } from "./controllers/Product/RemoveProductController";
+import { SaleProductController } from "./controllers/Sale/SaleProductController";
 
 
 const router = Router();
@@ -24,17 +28,23 @@ router.get("/test" , (req: Request, res: Response) => {
 //User Routes
 router.post("/user", new CreateUserController().handle);
 router.post("/session", new AuthUserController().handle);
-router.get("/me", isAutenticated, new DatailUserController().handle)
-router.delete("/user/remove", new RemoveUserController().handle)
+router.get("/me", isAutenticated, new DatailUserController().handle);
+router.delete("/user/remove", new RemoveUserController().handle);
 
 //Category Routes
-router.post("/category", isAutenticated, new CreateCategoryController().handle)
-router.patch("/category/edit" , isAutenticated, new EditCategoryController().handle)
-router.get("/category/all" , isAutenticated, new ListCategoryController().handle)
-router.delete("/category/remove", isAutenticated, new RemoveCategoryController().handle)
+router.post("/category", isAutenticated, new CreateCategoryController().handle);
+router.patch("/category/edit" , isAutenticated, new EditCategoryController().handle);
+router.get("/category/all" , isAutenticated, new ListCategoryController().handle);
+router.delete("/category/remove", isAutenticated, new RemoveCategoryController().handle);
 
 //Products Routes
-router.post("/product", isAutenticated, upload.single("file"), new CreateProductController().handle)
-router.put("/product/edit" , isAutenticated,upload.single("file"), new EditProductController().handle)
+router.post("/product", isAutenticated, upload.single("file"), new CreateProductController().handle);
+router.put("/product/edit" , isAutenticated,upload.single("file"), new EditProductController().handle);
+router.get("/product", isAutenticated, new ListProductCategoryController().handle);
+router.get("/products", isAutenticated, new ListProductsController().handle);
+router.delete("/product/remove", isAutenticated, new RemoveProductController().handle);
+
+//Sale Routes
+router.put("/sale/product" ,isAutenticated, new SaleProductController().handle)
 
 export { router };
