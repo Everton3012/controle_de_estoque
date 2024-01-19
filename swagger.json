@@ -92,6 +92,63 @@
             }
           }
         }
+      },
+      "/v1/user/remove?user_id={user_id}": {
+        "delete": {
+          "description": "Remover o usuario do sistema",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "description": "ID do usuário",
+              "required": "true",
+              "type": "string",
+              "format": "uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResponseDeleteUser"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/category": {
+        "post": {
+          "description": "Criar categoria",
+          "security": [
+            {
+                "bearerAuth":[]
+            }
+          ],
+          "requestBody": {
+            "description": "Dados de entrada necessários para a criação de uma nova categoria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestCreateCategory"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResponseCreateCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
@@ -151,9 +208,38 @@
               "type": "string"
             }
           }
-        }
+        },
+        "ResponseDeleteUser":{
+            "type": "object"
+        },
+        "RequestCreateCategory": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "ResponseCreateCategory": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
       },
-      "securitySchemes": {}
+      "securitySchemes": {
+        "bearerAuth":{
+            "description": "Autenticação utilizando Json Web Token",
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+      }
     }
   }
   
