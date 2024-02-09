@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM node:21.6.0-alpine
 WORKDIR /app
+COPY package.json .
+RUN npm install --production
 COPY . .
-#RUN apk add --no-cache python2 g++ make
-#ENV
-EXPOSE 3000
-CMD ["node", "src/server.ts"]
+CMD ["node", "dist/server.js"]
+EXPOSE 3333

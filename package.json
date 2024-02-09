@@ -1,12 +1,13 @@
 {
   "name": "controle_de_estoque",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc --build",
-    "clean": "tsc --build --clean"
+    "clean": "tsc --build --clean",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@prisma/client": "^5.8.0",
